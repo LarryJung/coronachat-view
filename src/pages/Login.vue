@@ -3,13 +3,15 @@
     <div class="col-lg-5 col-xs-10 q-mt-lg q-pt-lg">
       <div class="col">
         <div class="q-gutter-md">
-          <div v-if="$store.state.auth.createdUser.password && !$store.state.auth.isLogin">가입되었습니다. 랜덤 비밀번호는 
-            <span class="text-bold">{{$store.state.auth.createdUser.password}}</span> 입니다. 기억해 두세요!</div>
+          <div v-if="$store.state.auth.createdUser.password && !$store.state.auth.isLogin">
+            가입되었습니다. 랜덤 비밀번호는
+            <span class="text-bold">{{$store.state.auth.createdUser.password}}</span> 입니다. 기억해 두세요!
+          </div>
           <q-input
             square
             outlined
             clearable
-            lazy-rules            
+            lazy-rules
             autofocus
             v-model="email"
             type="email"
@@ -20,7 +22,7 @@
             square
             outlined
             clearable
-            lazy-rules            
+            lazy-rules
             v-model="password"
             type="password"
             label="password"
@@ -50,11 +52,12 @@ async function login(payload, vueInstance) {
   try {
     const response = await vueInstance.$axios.post(
       "http://localhost:8080/users/login",
-      payload
+      payload,
+      { withCredentials: true }
     );
     if (response.status == 200) {
       vueInstance.$store.commit("login");
-      vueInstance.$router.push('/')
+      vueInstance.$router.push("/");
     } else {
       alert(response.status);
     }
@@ -78,13 +81,13 @@ export default {
       const payload = {
         email: this.email,
         password: this.password
-      }
-      login(payload, this)
+      };
+      login(payload, this);
     }
   },
   mounted() {
-    this.email = this.$store.state.auth.createdUser.email
-    this.password = this.$store.state.auth.createdUser.password
+    this.email = this.$store.state.auth.createdUser.email;
+    this.password = this.$store.state.auth.createdUser.password;
   }
 };
 </script>

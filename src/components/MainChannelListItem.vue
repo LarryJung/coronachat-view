@@ -17,7 +17,6 @@ export default {
       type: String,
       required: true
     },
-
     caption: {
       type: String,
       default: ''

@@ -3,7 +3,7 @@
     <q-item-section>
       <q-item-label>
         {{ title }}
-        <span class="text-grey-6 text-h7">- {{ caption }}명 참여</span>
+        <span class="text-grey-6 text-h7">- {{ numberOfParticipants }}명 참여</span>
       </q-item-label>
       <div class="row justify-end">
         <q-item-label caption>{{ unReadCount }}개의 메시지</q-item-label>
@@ -16,19 +16,19 @@
 export default {
   name: "MainChannelListItem",
   props: {
-    title: {
+    name: {
       type: String,
       required: true
     },
 
-    caption: {
+    numberOfParticipants: {
       type: String,
       default: ""
     },
 
     id: {
-      type: Number,
-      default: 0
+      type: String,
+      default: ""
     },
 
     unReadCount: {
