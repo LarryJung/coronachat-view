@@ -19,14 +19,14 @@ const routes = [
         path: '/channels/:id',
         component: () => import('pages/ChatStream.vue'),
         props: true,
-        beforeEnter: (to, from, next) => {
-          const isLogin = JSON.parse(window.localStorage.getItem("Store")).auth.isLogin
-          if (!isLogin) {
-            Notify.create('로그인이 필요합니다.')
-            next('/login')
-          }
-          else next()
-        }
+        // beforeEnter: (to, from, next) => {
+        //   const isLogin = JSON.parse(window.localStorage.getItem("Store")).auth.isLogin
+        //   if (!isLogin) {
+        //     Notify.create('로그인이 필요합니다.')
+        //     next('/login')
+        //   }
+        //   else next()
+        // }
       }
     ]
   }
